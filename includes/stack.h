@@ -4,18 +4,18 @@
 #ifndef STACK_H
 #define STACK_H
 
-#define stack_name(name, I)   stack_##name##_##I
-#define stack_t(I)            stack_name(t, I)
+#define stack_name(name, T)   stack_##name##_##T
+#define stack_t(T)            stack_name(t, T)
 
-#define stack_create(I)       stack_name(create, I)
-#define stack_destroy(I)      stack_name(destroy, I)
+#define stack_create(T)       stack_name(create, T)
+#define stack_destroy(T)      stack_name(destroy, T)
 
-#define stack_push(I)         stack_name(push, I)
-#define stack_top(I)          stack_name(top, I)
-#define stack_pop(I)          stack_name(pop, I)
+#define stack_push(T)         stack_name(push, T)
+#define stack_top(T)          stack_name(top, T)
+#define stack_pop(T)          stack_name(pop, T)
 
 /* Indicates whether the stack is empty. */
-#define stack_empty(I)        stack_name(empty, I)
+#define stack_empty(T)        stack_name(empty, T)
 
 #define stack_declare(T)                                                       \
   typedef struct {                                                             \
