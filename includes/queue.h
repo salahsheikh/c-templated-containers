@@ -46,7 +46,7 @@
     return created;                                                            \
   }                                                                            \
                                                                                \
-  inline bool queue_empty(T)(queue_t(T) * q) { return q->size == 0; }          \
+  bool queue_empty(T)(queue_t(T) * q) { return q->size == 0; }                 \
                                                                                \
   enum QUEUE_RESULT queue_push(T)(queue_t(T) * q, T new_val) {                 \
     if (q->size == q->capacity)                                                \

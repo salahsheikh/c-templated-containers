@@ -32,7 +32,7 @@
     return created;                                                            \
   }                                                                            \
                                                                                \
-  inline bool stack_empty(T)(stack_t(T) * s) { return s->current == 0; }       \
+  bool stack_empty(T)(stack_t(T) * s) { return s->current == 0; }              \
                                                                                \
   enum STACK_RESULT stack_push(T)(stack_t(T) * q, T new_val) {                 \
     if (q->current == q->capacity)                                             \

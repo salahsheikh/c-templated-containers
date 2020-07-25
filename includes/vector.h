@@ -81,9 +81,9 @@
     v->data[v->size++] = new_val;                                              \
   }                                                                            \
                                                                                \
-  inline void vector_pop_back(T)(vector_t(T) * v) { --(v->size); }             \
+  void vector_pop_back(T)(vector_t(T) * v) { --(v->size); }                    \
                                                                                \
-  inline T vector_at(T)(vector_t(T) * v, size_t idx) { return v->data[idx]; }  \
+  T vector_at(T)(vector_t(T) * v, size_t idx) { return v->data[idx]; }         \
                                                                                \
   void vector_destroy(T)(vector_t(T) * v) {                                    \
     free(v->data);                                                             \
