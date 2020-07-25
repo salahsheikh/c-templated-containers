@@ -12,7 +12,7 @@ To use any or all of the containers, simply integrate the relevant header files 
 
 ### Prerequisites (to test)
 
-CMake and Google Test are used to test the containers. Ensure that you have them installed before proceeding.
+CMake and Google Test are used to test the containers.
 
 
 ### Example Usage
