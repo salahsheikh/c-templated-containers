@@ -1,7 +1,7 @@
 # c-templated-containers
 
 A header-only library of templated data-structures in C. Using the preprocessor, template meta-programming can be used to wrap containers around arbitrary types.
-The implemented containers are inspired by the C++ STL library and serve the same functionality. The implemented containers are:
+The implemented containers are inspired by the C++ STL library and serve the same functionality. They also allow you to specify custom allocators and has no dependency to a standard library. The implemented containers are:
 * Stack
 * Queue
 * Vector
@@ -26,10 +26,10 @@ In its place is where the preprocessor will spawn the generated functions for th
 typedef struct {
   int a;
 } custom_obj;
-queue_declare(custom_obj);
+queue_declare(custom_obj, malloc, free);
 
 // Primitive types
-queue_declare(int);
+queue_declare(int, malloc, free);
 ```
 
 Each of the containers supports a slightly different API.
