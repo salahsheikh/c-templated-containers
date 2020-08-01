@@ -41,7 +41,7 @@ stack_t(T) * stack_create(T)(size_t initial_capacity);
 void stack_destroy(T)(stack_t(T) * created);
 
 enum STACK_RESULT stack_push(T)(stack_t(T) * q, T new_val);
-STACK_RESULT stack_top(T)(stack_t(T) * q, T * ref);
+enum STACK_RESULT stack_top(T)(stack_t(T) * q, T * ref);
 enum STACK_RESULT stack_pop(T)(stack_t(T) * q);
 
 /* Indicates whether the stack is empty. */
@@ -70,7 +70,7 @@ vector_t(T) * vector_create(T)();
 vector_t(T) * vector_create_default(T)(size_t initial_capacity, T default_val);
 void vector_reserve(T)(vector_t(T) * v, size_t new_capacity);
 bool vector_empty(T)(vector_t(T) * v);
-void vector_push_back(T)(vector_t(T) * v, T new_val)
+void vector_push_back(T)(vector_t(T) * v, T new_val);
 void vector_pop_back(T)(vector_t(T) * v);
 // Analogous to the .at(idx) and the [] operator overload in the C++ STL
 T vector_at(T)(vector_t(T) * v, size_t idx);
