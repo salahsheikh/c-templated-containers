@@ -1,7 +1,7 @@
 # c-templated-containers
 
 A header-only library of templated data-structures in C. Using the preprocessor, template meta-programming can be used to wrap containers around arbitrary types.
-The implemented containers are inspired by the C++ STL library and serve the same functionality. They also allow you to specify custom allocators and has no dependency to a standard library. The implemented containers are:
+The implemented containers are inspired by the C++ STL library and serve the same functionality. The containers have custom allocators and have no dependency on a standard library. The implemented containers are:
 * Stack
 * Queue
 * Vector
