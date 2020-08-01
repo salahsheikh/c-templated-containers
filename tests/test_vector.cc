@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
 
 #include "../includes/vector.h"
+#include <stdlib.h>
 
-vector_declare(int);
+vector_declare(int, malloc, free);
 
 static constexpr int TESTING_SIZE = 8192;
 

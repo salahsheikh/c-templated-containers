@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
 
 #include "../includes/stack.h"
+#include <stdlib.h>
 
-stack_declare(int);
+stack_declare(int, malloc, free);
 
 TEST(QueueTest, Creation) {
   stack_t(int) *q = stack_create(int)(3);

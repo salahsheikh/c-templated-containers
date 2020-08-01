@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <stdbool.h>
 
 #ifndef QUEUE_H
@@ -30,17 +29,19 @@
 /* Indicates whether the queue is empty. */
 #define queue_empty(T)        queue_name(empty, T)
 
-#define queue_declare(T)                                                       \
+#define queue_declare(T, M_ALLOC, M_FREE)                                      \
   typedef struct {                                                             \
     T *data;                                                                   \
     size_t write, read;                                                        \
     size_t capacity, size;                                                     \
+    void *(*M_ALLOC)(unsigned);                                                \
+    void (*M_FREE)(void *);                                                    \
   } queue_t(T);                                                                \
                                                                                \
   queue_t(T) * queue_create(T)(size_t capacity) {                              \
-    queue_t(T) *created = (queue_t(T) *)malloc(sizeof(queue_t(T)));            \
+    queue_t(T) *created = (queue_t(T) *)M_ALLOC(sizeof(queue_t(T)));           \
     created->capacity = capacity;                                              \
-    created->data = (T *)malloc(sizeof(T) * capacity);                         \
+    created->data = (T *)M_ALLOC(sizeof(T) * capacity);                        \
     created->size = 0;                                                         \
     created->read = created->write = 0;                                        \
     return created;                                                            \
@@ -72,8 +73,8 @@
   }                                                                            \
                                                                                \
   void queue_destroy(T)(queue_t(T) * created) {                                \
-    free(created->data);                                                       \
-    free(created);                                                             \
+    M_FREE(created->data);                                                     \
+    M_FREE(created);                                                           \
   }                                                                            \
                                                                                \
   enum QUEUE_RESULT queue_pop(T)(queue_t(T) * q) {                             \

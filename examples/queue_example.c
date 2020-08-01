@@ -1,12 +1,13 @@
 #include <assert.h>
 
 #include "../includes/queue.h"
+#include <stdlib.h>
 
 typedef struct {
   int a;
 } custom_obj;
 
-queue_declare(custom_obj);
+queue_declare(custom_obj, malloc, free);
 
 int main()
 {

@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <stdbool.h>
 
 #ifndef STACK_H
@@ -17,17 +16,19 @@
 /* Indicates whether the stack is empty. */
 #define stack_empty(T)        stack_name(empty, T)
 
-#define stack_declare(T)                                                       \
+#define stack_declare(T, M_ALLOC, M_FREE)                                      \
   typedef struct {                                                             \
     T *data;                                                                   \
     size_t current;                                                            \
     size_t capacity;                                                           \
+    void *(*M_ALLOC)(unsigned);                                                \
+    void (*M_FREE)(void *);                                                    \
   } stack_t(T);                                                                \
                                                                                \
   stack_t(T) * stack_create(T)(size_t capacity) {                              \
-    stack_t(T) *created = (stack_t(T) *)malloc(sizeof(stack_t(T)));            \
+    stack_t(T) *created = (stack_t(T) *)M_ALLOC(sizeof(stack_t(T)));           \
     created->capacity = capacity;                                              \
-    created->data = (T *)malloc(sizeof(T) * capacity);                         \
+    created->data = (T *)M_ALLOC(sizeof(T) * capacity);                        \
     created->current = 0;                                                      \
     return created;                                                            \
   }                                                                            \
@@ -49,8 +50,8 @@
   }                                                                            \
                                                                                \
   void stack_destroy(T)(stack_t(T) * created) {                                \
-    free(created->data);                                                       \
-    free(created);                                                             \
+    M_FREE(created->data);                                                     \
+    M_FREE(created);                                                           \
   }                                                                            \
                                                                                \
   enum STACK_RESULT stack_pop(T)(stack_t(T) * q) {                             \

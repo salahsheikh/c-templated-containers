@@ -1,8 +1,10 @@
 #include <gtest/gtest.h>
 
 #include "../includes/queue.h"
+// Include stdlib for malloc and free
+#include <stdlib.h>
 
-queue_declare(int);
+queue_declare(int, malloc, free);
 
 TEST(QueueTest, QueueCreation) {
   queue_t(int) *q = queue_create(int)(3);
