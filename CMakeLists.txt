@@ -4,11 +4,11 @@ project(c-containers)
 set(CMAKE_C_STANDARD 99)
 
 enable_testing()
-find_package(GTest CONFIG REQUIRED)
+find_package(GTest REQUIRED)
 
 macro(define_test arg)
     add_executable(${arg} "tests/${arg}.cc")
-    target_link_libraries(${arg} PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+    target_link_libraries(${arg} PUBLIC GTest::GTest gtest_main)
     add_test(${arg} ${arg})
 endmacro()
 
